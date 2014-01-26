@@ -61,7 +61,7 @@ public class Main : MonoBehaviour {
 		var angularPos = this.FlowerPosFromSlot (slot);
 		Debug.Log ("Tree at slot " + slot + " pos " + angularPos);
 		var flower = new GameObject();
-		flower.transform.Translate(new Vector3(0f, 10f, -.5f));
+		flower.transform.Translate(new Vector3(0f, 9.9f, -.5f));
 		flower.transform.RotateAround (new Vector3 (0, 0, 0), Vector3.forward, -angularPos);
 
 		var rotation = this.gameObject.transform.rotation;
