@@ -9,7 +9,7 @@ public class Main : MonoBehaviour {
 	public GameObject theBear;
 
 	public float speed = 0.4f;
-
+	
 	// Use this for initialization
 	void Start () {
 		for (int i = 0; i < 10; i++) {
@@ -29,12 +29,18 @@ public class Main : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKey(KeyCode.RightArrow)) {
-			this.theBear.transform.localScale = new Vector3(1, 1, 1);
-			this.transform.Rotate(Vector3.forward, this.speed);
-		} else if(Input.GetKey(KeyCode.LeftArrow)) {
-			this.theBear.transform.localScale = new Vector3(-1, 1, 1);
-			this.transform.Rotate(Vector3.forward, -this.speed);
-		}
+		Animator anim = theBear.GetComponent<Animator>();
+
+		if (Input.GetKey (KeyCode.RightArrow)) {
+						this.theBear.transform.localScale = new Vector3 (1, 1, 1);
+						this.transform.Rotate (Vector3.forward, this.speed);
+						anim.Play("Walk");
+				} else if (Input.GetKey (KeyCode.LeftArrow)) {
+						this.theBear.transform.localScale = new Vector3 (-1, 1, 1);
+						this.transform.Rotate (Vector3.forward, -this.speed);
+						anim.Play("Walk");
+				} else {
+						anim.Play("Idle");
+				}
 	}
 }
