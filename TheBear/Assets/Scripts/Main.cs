@@ -100,17 +100,24 @@ public class Main : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
+		Animator anim = theBear.GetComponent<Animator>();
+
 		if (Input.GetKey(KeyCode.RightArrow)) 
 		{
 			this.theBear.transform.localScale = new Vector3(1, 1, 1);
 			this.transform.Rotate(Vector3.forward, this.SPEED);
+			anim.Play("Walk");
 		} 
 		else if(Input.GetKey(KeyCode.LeftArrow)) 
 		{
 			this.theBear.transform.localScale = new Vector3(-1, 1, 1);
 			this.transform.Rotate(Vector3.forward, -this.SPEED);
+			anim.Play("Walk");
+		} else 
+		{
+			anim.Play("Idle");
 		}
-
+		
 		if (Input.GetKeyDown(KeyCode.Space)) 
 		{
 			var pos = this.transform.rotation.eulerAngles.z;
